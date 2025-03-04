@@ -41,6 +41,8 @@ services:
   flowise:
     image: flowiseai/flowise
     restart: unless-stopped
+    networks:
+      - ${NETWORK_NAME}
     container_name: flowise
     environment:
         - PORT=3001
@@ -55,6 +57,8 @@ services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     restart: unless-stopped
+    networks:
+      - ${NETWORK_NAME}
     container_name: open-webui
     ports:
       - "3002:8080"
@@ -66,6 +70,8 @@ services:
   n8n-import:
     <<: *service-n8n
     container_name: n8n-import
+    networks:
+      - ${NETWORK_NAME}
     entrypoint: /bin/sh
     command:
       - "-c"
@@ -76,6 +82,8 @@ services:
   n8n:
     <<: *service-n8n
     container_name: n8n
+    networks:
+      - ${NETWORK_NAME}
     restart: unless-stopped
     ports:
       - 5678:5678
@@ -91,6 +99,8 @@ services:
     image: qdrant/qdrant
     container_name: qdrant
     restart: unless-stopped
+    networks:
+      - ${NETWORK_NAME}
     ports:
       - 6333:6333
     volumes:
@@ -139,3 +149,7 @@ services:
     image: ollama/ollama:rocm
     depends_on:
      - ollama-gpu-amd
+
+networks:
+  supabaseagents-supa-idxh6c_default:
+    external: true
