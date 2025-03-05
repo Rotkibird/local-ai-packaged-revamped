@@ -151,5 +151,5 @@ services:
      - ollama-gpu-amd
 
 networks:
-  supabaseagents-supa-idxh6c_default:
+  my_shared_network:
     external: true
