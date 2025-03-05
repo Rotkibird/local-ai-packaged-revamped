@@ -111,7 +111,7 @@ services:
       - QDRANT__SERVICE__API_KEY=${QDRANT__SERVICE__API_KEY}  # Set API key
 
   ollama-cpu:
-    profiles: ["cpu"]
+    # profiles: ["cpu"]
     <<: *service-ollama
 
   ollama-gpu:
@@ -134,7 +134,7 @@ services:
       - "/dev/dri"
 
   ollama-pull-llama-cpu:
-    profiles: ["cpu"]
+    # profiles: ["cpu"]
     <<: *init-ollama
     depends_on:
       - ollama-cpu
