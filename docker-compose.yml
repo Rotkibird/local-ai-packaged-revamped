@@ -61,7 +61,7 @@ services:
       - ${NETWORK_NAME}
     container_name: open-webui
     ports:
-      - "3002:8080"
+      - "3002:8085"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
