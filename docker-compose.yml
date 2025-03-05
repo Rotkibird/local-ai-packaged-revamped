@@ -60,6 +60,8 @@ services:
     networks:
       - ${NETWORK_NAME}
     container_name: open-webui
+    environment:
+      - PORT=8085  # Force the app to listen on 8085
     ports:
       - "3002:8085"
     extra_hosts:
